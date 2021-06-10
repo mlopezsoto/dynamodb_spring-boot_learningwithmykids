@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * DynamoDB AWS Access configuration.
  */
+
 @Configuration
 @EnableDynamoDBRepositories(basePackageClasses = LearningWithMyKidsDynamoDBRepository.class,
         dynamoDBMapperConfigRef = "dynamoDBMapperConfig", dynamoDBMapperRef = "dynamoDBMapper")
@@ -29,6 +30,9 @@ public class DynamoDBConfig {
     @Value("${amazon.aws.secretkey}")
     private String amazonAWSSecretKey;
 
+    /**
+     * Environment value.
+     */
     @Value("${learningwithmykids.env}")
     private String env;
 

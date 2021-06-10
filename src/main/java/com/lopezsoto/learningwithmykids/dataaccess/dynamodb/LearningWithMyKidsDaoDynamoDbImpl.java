@@ -2,13 +2,11 @@ package com.lopezsoto.learningwithmykids.dataaccess.dynamodb;
 
 import com.lopezsoto.learningwithmykids.dataaccess.LearningWithMyKidsDao;
 import com.lopezsoto.learningwithmykids.model.*;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import lombok.NonNull;
-
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,7 +15,6 @@ import java.util.stream.Collectors;
  * LearningWithMyKidsDao implementation using a DynamoDB database.
  */
 @Service
-
 public class LearningWithMyKidsDaoDynamoDbImpl implements LearningWithMyKidsDao {
 
     private static String GOAL_DEFINITION_PK = "GOALDEF";
@@ -121,8 +118,8 @@ public class LearningWithMyKidsDaoDynamoDbImpl implements LearningWithMyKidsDao 
         LearningWithMyKidsDynamoDBEntity learningWithMyKidsDynamoDBEntity = new LearningWithMyKidsDynamoDBEntity();
         learningWithMyKidsDynamoDBEntity.setPartitionKey(FAMILY_ID_PREFIX + familyId + "#" + FAMILY_MEMBER_ID_PREFIX + memberId);
         learningWithMyKidsDynamoDBEntity.setSortKey(ACTION_ID_PREFIX + action.getId());
-        learningWithMyKidsDynamoDBEntity.setGoal(action.getGoalDefinition().getGoalDefinition());
-        learningWithMyKidsDynamoDBEntity.setActivity(action.getActivityDefinition().getActivityDefinition());
+        learningWithMyKidsDynamoDBEntity.setGoal(action.getGoalDefinition().getName());
+        learningWithMyKidsDynamoDBEntity.setActivity(action.getActivityDefinition().getName());
         learningWithMyKidsDynamoDBEntity.setDescription(action.getDescription());
         learningWithMyKidsDynamoDBEntity.setDate(action.getDate().toString());
         learningWithMyKidsDynamoDBEntity.setTimeInvestedInMinutes(action.getTimeInvestedInMinutes());
@@ -136,7 +133,7 @@ public class LearningWithMyKidsDaoDynamoDbImpl implements LearningWithMyKidsDao 
     public void saveActivityDefinition(ActivityDefinition activityDefinition) {
         LearningWithMyKidsDynamoDBEntity learningWithMyKidsDynamoDBEntity = new LearningWithMyKidsDynamoDBEntity();
         learningWithMyKidsDynamoDBEntity.setPartitionKey(ACTIVITY_DEFINITION_PK);
-        learningWithMyKidsDynamoDBEntity.setSortKey(activityDefinition.getActivityDefinition());
+        learningWithMyKidsDynamoDBEntity.setSortKey(activityDefinition.getName());
         learningWithMyKidsDynamoDBRepository.save(learningWithMyKidsDynamoDBEntity);
     }
 
@@ -144,7 +141,7 @@ public class LearningWithMyKidsDaoDynamoDbImpl implements LearningWithMyKidsDao 
     public void saveGoalDefinition(GoalDefinition goalDefinition) {
         LearningWithMyKidsDynamoDBEntity learningWithMyKidsDynamoDBEntity = new LearningWithMyKidsDynamoDBEntity();
         learningWithMyKidsDynamoDBEntity.setPartitionKey(GOAL_DEFINITION_PK);
-        learningWithMyKidsDynamoDBEntity.setSortKey(goalDefinition.getGoalDefinition());
+        learningWithMyKidsDynamoDBEntity.setSortKey(goalDefinition.getName());
         learningWithMyKidsDynamoDBRepository.save(learningWithMyKidsDynamoDBEntity);
     }
 

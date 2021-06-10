@@ -150,7 +150,7 @@ class LearningWithMyKidsDaoDynamoDbImplTest {
         Assertions.assertEquals(2, activityDefinitions.size());
 
         Assertions.assertTrue(activityDefinitions.stream()
-                .anyMatch(activityDefinition -> "MYActDef2".equals(activityDefinition.getActivityDefinition())));
+                .anyMatch(activityDefinition -> "MYActDef2".equals(activityDefinition.getName())));
 
     }
 
@@ -173,6 +173,12 @@ class LearningWithMyKidsDaoDynamoDbImplTest {
     }
 
     @Test
+    void getFamilyByNonExistentId() {
+        Family family = learningWithMyKidsDaoDynamoDb.getFamilyById(TEST_FAMILY_ID_1);
+        Assertions.assertNull(family);
+    }
+
+    @Test
     void getFamilyMembersByFamilyId() {
         learningWithMyKidsDaoDynamoDb.saveFamilyMember(TEST_FAMILY_ID_2, TEST_FAMILY_MEMBER_3);
         learningWithMyKidsDaoDynamoDb.saveFamilyMember(TEST_FAMILY_ID_2, TEST_FAMILY_MEMBER_4);
@@ -185,6 +191,12 @@ class LearningWithMyKidsDaoDynamoDbImplTest {
         Assertions.assertTrue(familyMembers.stream()
                 .anyMatch(familyMember -> TEST_FAMILY_MEMBER_4.equals(familyMember)));
 
+    }
+
+    @Test
+    void getFamilyMembersByNonExistentId() {
+        List<FamilyMember> familyMembers = learningWithMyKidsDaoDynamoDb.getFamilyMembersByFamilyId(TEST_FAMILY_ID_2);
+        Assertions.assertEquals(0, familyMembers.size());
     }
 
     @Test
