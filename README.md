@@ -8,6 +8,9 @@ The design of the database follows some of the patters expressed here:
 
 Here is an example of the DynamoDB table: https://docs.google.com/spreadsheets/d/1wmnaqWdzVnjSVOqfkwL6l0B_hLI6aoTlyL5YDi5yb6I/edit?usp=sharing
 
+Here is an image of the sample data structure:
+![](DataExample.jpg)
+
 Sample result of DynamoDB describe-table command:
 
 ```
@@ -57,10 +60,15 @@ The technology stack includes:
 - Spring Boot
 - Spring Data
 - DynamoDB
+- Lombok
+- Swagger
 
 # Running the application
 
-You need to have a AWS DynamoDB table (and an AWS account of course) named **LearningWithMyKids** with a partition key named **partitionKey** and a sort key named **sortKey**. You also need to provide your AWS credentials in the file **application.properties**. After that, you you can run the app as a regular Spring Boot Application. 
+You need to have a AWS DynamoDB table (and an AWS account of course) named **LearningWithMyKids** with a partition key named **partitionKey** and a sort key named **sortKey**. 
+You also need to provide your AWS credentials in the file **application.properties**. After that, you can run the app as a regular Spring Boot Application. 
+To run the integration tests you would need an extra table called **TestLearningWithMyKids**. 
+You can also create a docker image using the included *Dockerfile*.
 
 There is a Swagger UI that can be used to explore the API. i.e. localhost: http://localhost:8080/swagger-ui/
 

@@ -31,7 +31,7 @@ public class DynamoDBConfig {
     private String amazonAWSSecretKey;
 
     /**
-     * Environment value.
+     * Environment value. Test or prod.
      */
     @Value("${learningwithmykids.env}")
     private String env;

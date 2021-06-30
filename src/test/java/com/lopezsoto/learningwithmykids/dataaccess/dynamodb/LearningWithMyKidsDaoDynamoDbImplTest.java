@@ -15,6 +15,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Set of integration tests.
+ */
 @SpringBootTest
 @ActiveProfiles("test")
 @Slf4j
@@ -29,6 +32,8 @@ class LearningWithMyKidsDaoDynamoDbImplTest {
 
     @Autowired
     private AmazonDynamoDB amazonDynamoDB;
+
+    /* Integration test data */
     private static String TEST_MEMBER_ID_1 = "PATRICIA";
     private static String TEST_MEMBER_ID_2 = "RAMO";
     private static String TEST_MEMBER_ID_3 = "JAMES";

@@ -24,6 +24,9 @@ public class LearningWithMyKidsDynamoDBEntity {
     @DynamoDBIgnore
     private LearningWithMyKidsDynamoDBId learningWithMyKidsDynamoDBId;
 
+    /**
+     * DynamoDB partition key.
+     */
     @DynamoDBHashKey(attributeName = "partitionKey")
     public String getPartitionKey() {
         return learningWithMyKidsDynamoDBId != null ? learningWithMyKidsDynamoDBId.getPartitionKey() : null;
@@ -36,6 +39,9 @@ public class LearningWithMyKidsDynamoDBEntity {
         learningWithMyKidsDynamoDBId.setPartitionKey(partitionKey);
     }
 
+    /**
+     * DynamoDB sort key.
+     */
     @DynamoDBRangeKey(attributeName = "sortKey")
     public String getSortKey() {
         return learningWithMyKidsDynamoDBId != null ? learningWithMyKidsDynamoDBId.getSortKey() : null;
@@ -48,23 +54,53 @@ public class LearningWithMyKidsDynamoDBEntity {
         learningWithMyKidsDynamoDBId.setSortKey(sortKey);
     }
 
+    /**
+     * Learning goal.
+     */
     private String goal;
 
+    /**
+     * goal activity.
+     */
     private String activity;
 
+    /**
+     * Family's country info
+     */
     private String country;
 
+    /**
+     * Family's city info
+     */
     private String city;
 
+    /**
+     * Family member age
+     */
     private Integer age;
 
+    /**
+     * Family member first name
+     */
     private String firstName;
 
+    /**
+     * Family member last name
+     */
     private String lastName;
 
+    /**
+     * Activity description
+     */
     private String description;
 
+    /**
+     * Activity date
+     */
     private String date;
 
+    /**
+     * Time investing in the learning activity
+     */
     private Integer timeInvestedInMinutes;
 }

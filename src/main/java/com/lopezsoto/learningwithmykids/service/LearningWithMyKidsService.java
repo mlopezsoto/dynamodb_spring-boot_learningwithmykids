@@ -1,15 +1,13 @@
-package com.lopezsoto.learningwithmykids.dataaccess;
+package com.lopezsoto.learningwithmykids.service;
 
 import com.lopezsoto.learningwithmykids.model.*;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * Defines the data access methods.
+ * Service interface defining the available app operations.
  */
-@Service
-public interface LearningWithMyKidsDao {
+public interface LearningWithMyKidsService {
 
     /**
      * Gets all activity definitions.
