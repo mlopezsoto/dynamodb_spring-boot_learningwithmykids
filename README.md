@@ -71,6 +71,3 @@ To run the integration tests you would need an extra table called **TestLearning
 You can also create a docker image using the included *Dockerfile*.
 
 There is a Swagger UI that can be used to explore the API. i.e. localhost: http://localhost:8080/swagger-ui/
-
-
-**_MORE DOCUMENTATION COMMING_**
